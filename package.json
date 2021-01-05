@@ -13,7 +13,7 @@
     "prepublishOnly": "npm run release"
   },
   "dependencies": {
-    "axios": "0.19.0"
+    "axios": "0.21.1"
   },
   "devDependencies": {
     "@babel/core": "7.5.5",
