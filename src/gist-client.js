@@ -98,8 +98,8 @@ class GistClient {
   _authHeader () {
     return this.token
       ? {
-        Authorization: `token ${this.token}`
-      }
+          Authorization: `token ${this.token}`
+        }
       : {}
   }
 }

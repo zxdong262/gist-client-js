@@ -9,6 +9,7 @@
   "scripts": {
     "test": "./node_modules/.bin/standard && jest",
     "lint": "./node_modules/.bin/standard",
+    "fix": "./node_modules/.bin/standard --fix",
     "release": "webpack --progress",
     "prepublishOnly": "npm run release"
   },
