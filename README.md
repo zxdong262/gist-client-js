@@ -1,6 +1,6 @@
 # Github Gist Client for JavaScript
 
-[![Build Status](https://travis-ci.org/zxdong262/gist-client-js.svg?branch=release)](https://travis-ci.org/zxdong262/gist-client-js)
+[![Build Status](https://travis-ci.com/zxdong262/gist-client-js.svg?branch=release)](https://travis-ci.com/zxdong262/gist-client-js)
 
 Github gist API wrapper. [api docs](https://developer.github.com/v3/gists/).
 
