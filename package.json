@@ -1,11 +1,12 @@
 {
   "name": "gist-wrapper",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Github gist API wrapper.",
   "author": "ZHAO Xudong <zxdong@gmail.com>",
   "license": "MIT",
-  "main": "dist/gist-client.js",
-  "module": "src/gist-client.js",
+  "main": "dist/gist.js",
+  "module": "src/gist-client.ts",
+  "types": "dist/gitee",
   "scripts": {
     "test": "./node_modules/.bin/standard && jest",
     "lint": "./node_modules/.bin/standard",
@@ -19,7 +20,9 @@
   "devDependencies": {
     "@babel/core": "7.12.10",
     "@babel/preset-env": "7.12.11",
+    "@babel/preset-typescript": "^7.12.7",
     "@babel/register": "7.12.10",
+    "@tsconfig/recommended": "^1.0.1",
     "axios": "*",
     "babel-core": "6.26.3",
     "babel-eslint": "10.1.0",
@@ -28,6 +31,9 @@
     "dotenv-override-true": "6.2.2",
     "jest": "26.6.3",
     "standard": "16.0.3",
+    "ts-loader": "^8.0.14",
+    "ts-standard": "^10.0.0",
+    "typescript": "^4.1.3",
     "webpack": "5.11.1",
     "webpack-cli": "4.3.1"
   },

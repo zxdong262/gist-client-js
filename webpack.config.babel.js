@@ -4,12 +4,15 @@ const pack = require('./package.json')
 const defaultConfig = {
   mode: 'production',
   devtool: 'source-map',
-  entry: './src/gist-client.js',
+  entry: './src/gist-client.ts',
   output: {
-    filename: 'gist-client.js',
-    library: 'GistClient',
+    filename: 'gist.js',
+    library: 'GitHubGist',
     libraryTarget: 'umd',
     globalObject: 'this' // fix window undefined issue in node
+  },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js']
   },
   externals: {
     axios: {
@@ -18,6 +21,14 @@ const defaultConfig = {
       amd: 'axios',
       root: 'axios'
     }
+  },
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        loader: 'ts-loader'
+      }
+    ]
   },
   plugins: [
     new webpack.DefinePlugin({

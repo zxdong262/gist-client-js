@@ -1,11 +1,16 @@
 // based on tyler's work: https://github.com/tylerlong/ringcentral-js-concise
-import axios from 'axios'
+import axios, { AxiosInstance } from 'axios'
+import { Config, Data } from './types'
 
 const version = process.env.version
 const apiServer = 'https://api.github.com'
 
-class HTTPError extends Error {
-  constructor (status, statusText, data, config) {
+export class HTTPError extends Error {
+  status: number
+  statusText: string
+  data: Data
+  config: Config
+  constructor (status: number, statusText: string, data: Data, config: Config) {
     super(`status: ${status}
 statusText: ${statusText}
 data: ${JSON.stringify(data, null, 2)}
@@ -18,8 +23,12 @@ config: ${JSON.stringify(config, null, 2)}`)
 }
 
 class GistClient {
+  token: string
+  server: string
+  _axios: AxiosInstance
+  userAgentHeader: string
   constructor (
-    token,
+    token: string,
     userAgentHeader = `github-gist-client-js/v${version}`
   ) {
     this.token = token
@@ -40,7 +49,7 @@ class GistClient {
     }
   }
 
-  request (config) {
+  request (config: Config) {
     const uri = config.url.startsWith('http')
       ? config.url
       : this.server + config.url
@@ -51,43 +60,43 @@ class GistClient {
     })
   }
 
-  get (url, config = {}) {
+  get (url: string, config = {}) {
     return this.request({ ...config, method: 'get', url })
   }
 
-  delete (url, config = {}) {
+  delete (url: string, config = {}) {
     return this.request({ ...config, method: 'delete', url })
   }
 
-  post (url, data = undefined, config = {}) {
+  post (url: string, data: Data | undefined = undefined, config = {}) {
     return this.request({ ...config, method: 'post', url, data })
   }
 
-  put (url, data = undefined, config = {}) {
+  put (url: string, data: Data | undefined = undefined, config = {}) {
     return this.request({ ...config, method: 'put', url, data })
   }
 
-  patch (url, data = undefined, config = {}) {
+  patch (url: string, data: Data | undefined = undefined, config = {}) {
     return this.request({ ...config, method: 'patch', url, data })
   }
 
-  create (data) {
+  create (data: Data) {
     return this.post('/gists', data)
   }
 
-  update (gistId, data) {
+  update (gistId: string, data: Data) {
     return this.patch(`/gists/${gistId}`, data)
   }
 
-  getOne (gistId) {
+  getOne (gistId: string) {
     return this.get(`/gists/${gistId}`)
   }
 
-  delOne (gistId) {
+  delOne (gistId: string) {
     return this.delete(`/gists/${gistId}`)
   }
 
-  _patchHeaders (headers) {
+  _patchHeaders (headers: Data) {
     return {
       ...this._authHeader(),
       'X-User-Agent': this.userAgentHeader,
