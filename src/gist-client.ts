@@ -80,20 +80,20 @@ class GistClient {
     return this.request({ ...config, method: 'patch', url, data })
   }
 
-  create (data: Data) {
-    return this.post('/gists', data)
+  create (data: Data, conf: Config | undefined) {
+    return this.post('/gists', data, conf)
   }
 
-  update (gistId: string, data: Data) {
-    return this.patch(`/gists/${gistId}`, data)
+  update (gistId: string, data: Data, conf: Config | undefined) {
+    return this.patch(`/gists/${gistId}`, data, conf)
   }
 
-  getOne (gistId: string) {
-    return this.get(`/gists/${gistId}`)
+  getOne (gistId: string, conf: Config | undefined) {
+    return this.get(`/gists/${gistId}`, conf)
   }
 
-  delOne (gistId: string) {
-    return this.delete(`/gists/${gistId}`)
+  delOne (gistId: string, conf: Config | undefined) {
+    return this.delete(`/gists/${gistId}`, conf)
   }
 
   _patchHeaders (headers: Data) {
