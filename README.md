@@ -17,7 +17,7 @@ npm i gist-wrapper
 ```js
 import GistWrapper from 'gist-wrapper'
 
-const gc = new RingCentralEnage(
+const gc = new GistWrapper(
   GITHUB_TOKEN,
   userAgentHeaderString
 )
